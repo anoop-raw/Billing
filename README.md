@@ -29,6 +29,12 @@
 6. run init.sql file to create operation types
 7. Access the application at `http://localhost:8080`.
 
+## Run Test
+1. command for running unit test
+    ```bash
+    make test-long
+    ```
+   
 ## Curl for postman setup
 1. create loan schedule:
     ```bash
