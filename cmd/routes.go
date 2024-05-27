@@ -11,4 +11,5 @@ func setupRoutes(app *fiber.App, handler *handlers.BillingHandler) {
 	app.Get("/v1/loans/:loanID/delinquent", handler.IsDelinquent)
 	app.Post("/v1/loans/:loanID/payments", handler.MakePayment)
 	app.Post("/v1/loans/create", handler.CreateLoan)
+	app.Get("/v1/loans/:loanID", handler.GetLoan)
 }

@@ -22,6 +22,20 @@ func NewBillingService(loanRepo repo.LoanRepository) *BillingService {
 	return &BillingService{loanRepo: loanRepo}
 }
 
+func (s *BillingService) GetLoan(loanID uint) (*models.Loan, []models.Payment, error) {
+	loan, err := s.loanRepo.GetLoanByID(loanID)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	payments, err := s.loanRepo.GetPaymentsByLoanID(loanID)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return loan, payments, nil
+}
+
 func (s *BillingService) CreateLoan(amount float64, interestRate float64, weeks int) (*models.Loan, error) {
 	loan := &models.Loan{
 		Amount:       amount,

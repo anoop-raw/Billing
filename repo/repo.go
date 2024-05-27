@@ -55,18 +55,17 @@ func (r *SQLRepository) CreateLoan(loan *models.Loan) error {
 	})
 }
 
-// Loan repository methods
+// Payment repository methods
+func (r *SQLRepository) UpdatePayment(payment *models.Payment) error {
+	return r.db.Save(payment).Error
+}
+
 func (r *SQLRepository) GetLoanByID(loanID uint) (*models.Loan, error) {
 	var loan models.Loan
 	if err := r.db.First(&loan, loanID).Error; err != nil {
 		return nil, err
 	}
 	return &loan, nil
-}
-
-// Payment repository methods
-func (r *SQLRepository) UpdatePayment(payment *models.Payment) error {
-	return r.db.Save(payment).Error
 }
 
 func (r *SQLRepository) GetPaymentsByLoanID(loanID uint) ([]models.Payment, error) {
