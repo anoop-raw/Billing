@@ -8,6 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
+//go:generate mockgen -destination=../mockgen/repo/repo.go -source=./repo.go LoanRepository
 type LoanRepository interface {
 	GetLoanByID(loanID uint) (*models.Loan, error)
 	UpdatePayment(payment *models.Payment) error

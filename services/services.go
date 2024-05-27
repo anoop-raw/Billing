@@ -8,6 +8,7 @@ import (
 	"github.com/anoop-raw/Billing/repo"
 )
 
+//go:generate mockgen -destination=../mockgen/services/services.go -source=./services.go BillingServiceInterface
 type BillingServiceInterface interface {
 	GetOutstanding(loanID uint) (float64, error)
 	IsDelinquent(loanID uint, weekNumber int64) (bool, error)
