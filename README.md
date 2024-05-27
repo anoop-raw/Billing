@@ -35,29 +35,39 @@
     curl --location 'http://localhost:8000/v1/loans/create' \
     --header 'Content-Type: application/json' \
     --data '{
-    "amount": 1000000,
+    "amount": 100,
     "interest_rate": 10,
-    "weeks": 50
+    "weeks": 5
     }'
     ```
-
-2. Get Outstanding amount:
-    ```bash
-    curl --location 'http://localhost:8000/v1/loans/1/outstanding'
-    ```
-
-3. Check IsDelinquent:
-    ```bash
-    curl --location 'http://localhost:8000/v1/loans/1/delinquent'
-    ```
-
+2. Get Loan:
+   ```bash
+   curl --location --request GET 'http://localhost:8000/v1/loans/1' \
+   --header 'Content-Type: application/json' \
+   --data '{
+   "amount": 1000000,
+   "interest_rate": 10,
+   "weeks": 50
+   }'
+   ```
 3. MakePayment:
     ```bash
     curl --location 'http://localhost:8000/v1/loans/1/payments' \
     --header 'Content-Type: application/json' \
     --data '{
     "week": 1,
-    "amount": 220000
+    "amount": 20.19
     }'
     ```
+
+4. Get Outstanding amount:
+    ```bash
+    curl --location 'http://localhost:8000/v1/loans/1/outstanding'
+    ```
+
+5. Check IsDelinquent:
+    ```bash
+    curl --location 'http://localhost:8000/v1/loans/1/delinquent?weekNumber=3'
+    ```
+
 
