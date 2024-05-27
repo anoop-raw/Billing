@@ -1,0 +1,15 @@
+# Compiled binary executables
+*.exe
+*.out
+*.app
+
+# Log files
+*.log
+*.idea
+
+coverage.html
+coverage.txt
+
+
+# Dependency directories
+vendor/
